@@ -1,0 +1,89 @@
+\documentclass[twoside,11pt]{scrbook}
+
+% Establece el español como idioma del documento.
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[utf8]{inputenc}
+
+% Activa los enlaces dentro del documento (recuadros rojos en el PDF).
+\usepackage{hyperref}
+
+% Mejora el formato de las citas.
+\usepackage{cite}
+
+% Permite definir términos y acrónimos.
+\usepackage[acronym]{glossaries}
+\makeglossaries
+ 
+% Ajusta los márgenes establecidos en la guía de estilos para TFM de la EPS.
+\usepackage[
+  inner=3cm,
+  outer=2.5cm,
+  top=2.5cm,
+  bottom=2.5cm
+]{geometry}
+
+% Permite definir colores como variables
+\usepackage{color}
+\input{./conf/packages/colors}
+
+% Permite insertar pdf.
+\usepackage{pdfpages}
+
+% Permite añadir bloques de código.
+\usepackage{listings}
+\input{./conf/packages/listings}
+
+% Información acerca del trabajo
+\title{Mi Trabajo Final de Máster} 
+\author{David Peinado} 
+\date{Marzo 2018}
+\publishers{Universidad de Alicante}
+
+% Añade las definiciones de acrónimos.
+\input{./glossary/glossary}
+\input{./acronyms/acronyms}
+
+
+% ----------------------------- DOCUMENT BEGINS -----------------------------
+\begin{document}
+
+% -------------- COVER --------------
+\input{./cover/cover}
+
+
+% -------------- TITLE --------------
+\maketitle
+
+
+% -------------- FRONT MATTER --------------
+\frontmatter
+\input{./chapters/00_front_matter/preamble}
+\input{./chapters/00_front_matter/abstract}
+\input{./chapters/00_front_matter/acknowledgements}
+\input{./chapters/00_front_matter/front_matter}
+\input{./chapters/00_front_matter/cites}
+
+
+% -------------- MAIN MATTER--------------
+\mainmatter
+\glsresetall % resetea glosario y acrónimos por si se han utilizado antes.
+\input{./chapters/01_introduction/introduction}
+\input{./chapters/02_objectives/objectives}
+\input{./chapters/03_method/method}
+\input{./chapters/04_body/body}
+\input{./chapters/99_conclusion/conclusion}
+
+
+% -------------- BACK MATTER --------------
+\backmatter
+\nocite{*} % incluye las referencias que no se hayan citado.
+\bibliographystyle{apalike}
+\setbibpreamble{Bibliografía y referencias: se incluirá también la relación de obras y materiales consultados y empleados en la elaboración de la memoria del TFG/TFM. La bibliografía y las referencias serán indexadas en orden alfabético (sistema nombre y fecha) o se numerará correlativamente según aparezca (sistema numérico). Se empleará la familia 1 como tipo de letra. Podrá utilizarse cualquier sistema bibliográfico normalizado predominante en la rama de conocimiento, estableciéndose como prioritarios el sistema ISO 690, sistema APA (American Psychological Association) o Harvard (no necesariamente en ese orden de preferencia).\\}
+
+{\sffamily
+\bibliography{./bibliography/bibliography}
+}
+
+\appendix
+
+\end{document} 
